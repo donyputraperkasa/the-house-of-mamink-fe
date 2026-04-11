@@ -31,50 +31,50 @@ export default function ActivityForm({ initialData }: Props) {
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-                <label className="block text-sm font-medium">Title</label>
+                <label className="block text-sm font-semibold text-amber-700">Title</label>
                     <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     required
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-medium">Description</label>
+                <label className="block text-sm font-semibold text-amber-700">Description</label>
                     <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     required
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-medium">Date</label>
+                <label className="block text-sm font-semibold text-amber-700">Date</label>
                     <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     required
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-medium">Image</label>
-                    <input
+                <label className="block text-sm font-semibold text-amber-700">Image</label>
+                <input
                     type="file"
                     accept="image/*"
                     onChange={(e) => setImage(e.target.files?.[0] || null)}
-                    className="w-full"
+                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
             </div>
 
             <button
                 type="submit"
-                className="bg-black text-white px-4 py-2 rounded"
+                className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition"
             >
                 Submit
             </button>

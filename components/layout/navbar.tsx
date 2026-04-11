@@ -11,29 +11,29 @@ export default function Navbar() {
 
     return (
     <div className="fixed top-0 left-0 w-full z-50 flex justify-center pt-4">
-        <nav className="w-[92%] max-w-7xl flex items-center justify-between bg-white/20 backdrop-blur-xl border border-white/20 rounded-2xl shadow-lg px-4 md:px-8 py-3 md:py-4 transition-all duration-300">
+        <nav className="w-[92%] max-w-7xl flex items-center justify-between bg-gradient-to-r from-amber-700 via-yellow-600 to-amber-800 text-white backdrop-blur-xl border border-yellow-900/20 rounded-2xl shadow-lg px-4 md:px-8 py-3 md:py-4 transition-all duration-300">
 
             {/* Logo */}
-            <h1 className="text-lg font-bold text-blue-900 tracking-wide">
+            <h1 className="text-lg font-bold tracking-wide text-yellow-100">
                 the house of mamink
             </h1>
 
             {/* Menu */}
-            <div className="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-800">
+            <div className="hidden md:flex items-center gap-6 text-sm font-semibold text-yellow-50">
 
-                <Link href="/" className={`flex items-center gap-1 relative transition ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}>
+                <Link href="/" className={`flex items-center gap-1 relative transition ${pathname === "/" ? "text-yellow-300" : "hover:text-yellow-200"}`}>
                     <Home size={16} /> Home
-                    <span className={`absolute left-0 -bottom-1 h-[2px] bg-blue-500 transition-all ${pathname === "/" ? "w-full" : "w-0 group-hover:w-full"}`} />
+                    <span className={`absolute left-0 -bottom-1 h-[2px] bg-yellow-300 transition-all ${pathname === "/" ? "w-full" : "w-0 group-hover:w-full"}`} />
                 </Link>
 
-                <Link href="/about" className={`flex items-center gap-1 relative transition ${pathname === "/about" ? "text-blue-600" : "hover:text-blue-600"}`}>
+                <Link href="/about" className={`flex items-center gap-1 relative transition ${pathname === "/about" ? "text-yellow-300" : "hover:text-yellow-200"}`}>
                     <Info size={16} /> About
-                    <span className={`absolute left-0 -bottom-1 h-[2px] bg-blue-500 transition-all ${pathname === "/about" ? "w-full" : "w-0 group-hover:w-full"}`} />
+                    <span className={`absolute left-0 -bottom-1 h-[2px] bg-yellow-300 transition-all ${pathname === "/about" ? "w-full" : "w-0 group-hover:w-full"}`} />
                 </Link>
 
-                <Link href="/gallery" className={`flex items-center gap-1 relative transition ${pathname.startsWith("/ppdb") ? "text-blue-600" : "hover:text-blue-600"}`}>
+                <Link href="/gallery" className={`flex items-center gap-1 relative transition ${pathname.startsWith("/ppdb") ? "text-yellow-300" : "hover:text-yellow-200"}`}>
                     <User size={16} /> Gallery
-                    <span className={`absolute left-0 -bottom-1 h-[2px] bg-blue-500 transition-all ${pathname.startsWith("/ppdb") ? "w-full" : "w-0 group-hover:w-full"}`} />
+                    <span className={`absolute left-0 -bottom-1 h-[2px] bg-yellow-300 transition-all ${pathname.startsWith("/ppdb") ? "w-full" : "w-0 group-hover:w-full"}`} />
                 </Link>
 
             </div>
@@ -49,7 +49,7 @@ export default function Navbar() {
             {/* Right */}
             <div className="hidden md:flex items-center gap-3 text-sm">
                 <span className="text-lg">🇮🇩</span>
-                <span className="font-medium text-gray-800">Indonesia</span>
+                <span className="font-medium text-yellow-100">Indonesia</span>
             </div>
 
         </nav>
@@ -62,12 +62,12 @@ export default function Navbar() {
                 />
 
                 {/* Mobile Menu */}
-                <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-2xl p-6 space-y-4">
+                <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md bg-gradient-to-b from-amber-700 to-yellow-600 text-white backdrop-blur-xl border border-yellow-900/20 rounded-2xl shadow-2xl p-6 space-y-4">
 
                     <Link
                         href="/"
                         onClick={() => setOpen(false)}
-                        className={`flex items-center gap-3 text-base ${pathname === "/" ? "text-blue-600 font-semibold" : "text-gray-800"}`}
+                        className={`flex items-center gap-3 text-base ${pathname === "/" ? "text-yellow-300 font-semibold" : "text-yellow-50"}`}
                     >
                         <Home size={18} /> Home
                     </Link>
@@ -75,7 +75,7 @@ export default function Navbar() {
                     <Link
                         href="/about"
                         onClick={() => setOpen(false)}
-                        className={`flex items-center gap-3 text-base ${pathname === "/about" ? "text-blue-600 font-semibold" : "text-gray-800"}`}
+                        className={`flex items-center gap-3 text-base ${pathname === "/about" ? "text-yellow-300 font-semibold" : "text-yellow-50"}`}
                     >
                         <Info size={18} /> About
                     </Link>
@@ -83,7 +83,7 @@ export default function Navbar() {
                     <Link
                         href="/articles"
                         onClick={() => setOpen(false)}
-                        className={`flex items-center gap-3 text-base ${pathname.startsWith("/articles") ? "text-blue-600 font-semibold" : "text-gray-800"}`}
+                        className={`flex items-center gap-3 text-base ${pathname.startsWith("/articles") ? "text-yellow-300 font-semibold" : "text-yellow-50"}`}
                     >
                         <Newspaper size={18} /> Articles
                     </Link>
@@ -91,7 +91,7 @@ export default function Navbar() {
                     <Link
                         href="/activities"
                         onClick={() => setOpen(false)}
-                        className={`flex items-center gap-3 text-base ${pathname.startsWith("/activities") ? "text-blue-600 font-semibold" : "text-gray-800"}`}
+                        className={`flex items-center gap-3 text-base ${pathname.startsWith("/activities") ? "text-yellow-300 font-semibold" : "text-yellow-50"}`}
                     >
                         <Calendar size={18} /> Activities
                     </Link>
@@ -99,7 +99,7 @@ export default function Navbar() {
                     <Link
                         href="/ppdb"
                         onClick={() => setOpen(false)}
-                        className={`flex items-center gap-3 text-base ${pathname.startsWith("/ppdb") ? "text-blue-600 font-semibold" : "text-gray-800"}`}
+                        className={`flex items-center gap-3 text-base ${pathname.startsWith("/ppdb") ? "text-yellow-300 font-semibold" : "text-yellow-50"}`}
                     >
                         <User size={18} /> PPDB
                     </Link>

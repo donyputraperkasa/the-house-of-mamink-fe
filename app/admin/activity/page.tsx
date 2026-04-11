@@ -1,5 +1,5 @@
-import ActivityForm from '@/components/admin/activity/activity-form';
-import ActivityTable from '@/components/admin/activity/activity-table';
+import ActivityForm from '@/components/admin/activity/ActivityForm';
+import ActivityTable from '@/components/admin/activity/ActivityTable';
 
 export default function ActivityPage() {
     return (

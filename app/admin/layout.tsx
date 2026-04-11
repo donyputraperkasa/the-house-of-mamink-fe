@@ -1,4 +1,4 @@
-import AdminContainer from '@/components/admin/layout/admin-container';
+import AdminContainer from '@/components/admin/layout/AdminContainer';
 
 export default function AdminLayout({
     children,

@@ -13,8 +13,8 @@ export default function AdminContainer({ children }: { children: React.ReactNode
 
         {/* Content */}
         <div className={`relative transition-all duration-300 ${isCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`}>
-            <div className="p-6">
-            <BreadCrumbs />
+            <div className="px-6 py-8 space-y-6">
+                <BreadCrumbs  />
             {children}
             </div>
         </div>

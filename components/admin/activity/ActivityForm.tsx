@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { Activity } from '@/types';
 import { createActivity } from '@/services/activity.service';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+import { Button } from '@/components/ui/Button';
 
 type Props = {
     initialData?: Activity;
@@ -13,6 +16,7 @@ export default function ActivityForm({ initialData }: Props) {
     const [description, setDescription] = useState(initialData?.description || '');
     const [date, setDate] = useState(initialData?.date || '');
     const [image, setImage] = useState<File | null>(null);
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -29,55 +33,57 @@ export default function ActivityForm({ initialData }: Props) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded-xl border border-amber-200 shadow space-y-6"
+        >
+        <h2 className="text-xl font-bold text-amber-700">
+            Activity Management
+        </h2>
+
+        <div className="space-y-4">
             <div>
-                <label className="block text-sm font-semibold text-amber-700">Title</label>
-                    <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    required
-                />
+            <label className="text-sm font-semibold text-amber-700">Title</label>
+            <Input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter title"
+            />
             </div>
 
             <div>
-                <label className="block text-sm font-semibold text-amber-700">Description</label>
-                    <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    required
-                />
+            <label className="text-sm font-semibold text-amber-700">Description</label>
+            <Textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Write description"
+            />
             </div>
 
             <div>
-                <label className="block text-sm font-semibold text-amber-700">Date</label>
-                    <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                    required
-                />
+            <label className="text-sm font-semibold text-amber-700">Date</label>
+            <Input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+            />
             </div>
 
             <div>
-                <label className="block text-sm font-semibold text-amber-700">Image</label>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setImage(e.target.files?.[0] || null)}
-                    className="w-full border border-amber-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                />
+            <label className="text-sm font-semibold text-amber-700">Image</label>
+            <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setImage(e.target.files?.[0] || null)}
+            />
             </div>
+        </div>
 
-            <button
-                type="submit"
-                className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition"
-            >
-                Submit
-            </button>
+        <div className="flex justify-end">
+            <Button type="submit">
+            Submit
+            </Button>
+        </div>
         </form>
     );
 }

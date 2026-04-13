@@ -18,23 +18,21 @@ export default function ProfileForm() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="space-y-6 max-w-2xl bg-white p-6 rounded-xl shadow border border-amber-200"
+            className="bg-white p-6 rounded-xl border border-amber-200 shadow space-y-6"
         >
-            <div>
-                <h2 className="text-xl font-bold mb-1">Profile</h2>
-                <p className="text-sm text-amber-600">
-                Manage your profile information
-                </p>
-            </div>
+            <h2 className="text-xl font-bold text-amber-700">
+                Profile Management
+            </h2>
 
             <div className="space-y-4">
-                <ProfileFields form={form} onChange={handleChange} />
-
                 <AvatarUpload
                     avatar={form.avatar || ''}
                     uploading={uploading}
                     onUpload={handleFileUpload}
                 />
+                
+                <ProfileFields form={form} onChange={handleChange} />
+
             </div>
 
             <div className="flex justify-end">

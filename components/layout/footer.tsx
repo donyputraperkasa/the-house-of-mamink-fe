@@ -3,73 +3,63 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="mt-20 bg-gradient-to-r from-amber-800 via-yellow-700 to-amber-900 text-yellow-100">
-            <div className="max-w-6xl mx-auto px-6 py-12">
+        <footer className="mt-20 bg-gradient-to-r from-amber-900 via-yellow-800 to-amber-900 text-yellow-100">
+        <div className="max-w-6xl mx-auto px-6 py-14">
 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-yellow-200 mb-6">
-                    Hubungi Kami
-                </h3>
+            {/* Top Section */}
+            <div className="grid md:grid-cols-3 gap-10">
 
-                {/* Contact Info */}
-                <div className="grid md:grid-cols-2 gap-6 text-sm text-yellow-100">
+            {/* Brand */}
+            <div>
+                <h2 className="text-xl font-bold mb-3 text-yellow-200">
+                The House of Mamink
+                </h2>
+                <p className="text-sm text-yellow-100/80">
+                Tempat berbagi cerita, karya, dan momen berharga.
+                </p>
+            </div>
 
-                <div className="space-y-4">
-                    <div className="flex items-center gap-3 hover:text-yellow-300 transition">
-                        <MapPin size={18} />
-                        <span>Kalinongko Rt 15/08, Kedungsari, Pengasih, Kulon Progo, D.I Yogyakarta</span>
-                    </div>
-
-                    <div className="flex items-center gap-3 hover:text-yellow-300 transition">
-                        <Mail size={18} />
-                        <span>thehouseofmamink@gmail.com</span>
-                    </div>
+            {/* Contact */}
+            <div>
+                <h3 className="font-semibold mb-4">Kontak</h3>
+                <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-3">
+                    <MapPin size={18} />
+                    <span>Kalinongko Rt 15/08, Kulon Progo</span>
                 </div>
-
-                {/* Social */}
-                <div className="space-y-4">
-
-                    <a
-                        href="https://wa.me/6285169757490"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 hover:text-yellow-300 transition"
-                    >
-                        <MessageCircle size={18} />
-                        <span>Chat WhatsApp</span>
-                    </a>
-
-                    {/* <a
-                        href="https://www.instagram.com/smpbopkriwates/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 hover:text-pink-600 transition"
-                    >
-                        <Instagram size={18} />
-                        <span>@smpbopkrisatuwates</span>
-                    </a> */}
-
-                    <Link
-                        href="/admin-login"
-                        className="flex items-center font-semibold gap-3 text-yellow-100 hover:text-yellow-300 transition mt-2"
-                    >
-                        Login Admin
-                    </Link>
+                <div className="flex items-center gap-3">
+                    <Mail size={18} />
+                    <span>thehouseofmamink@gmail.com</span>
                 </div>
-                </div>
-
-                {/* Bottom */}
-                <div className="mt-10 pt-6 border-t border-yellow-800 text-xs font-semibold text-yellow-200 flex flex-col md:flex-row justify-between items-center gap-2">
-                    <a
-                        href="https://portofolio-ku-gold.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-yellow-300 transition"
-                    >
-                        Created by : mas dony putra perkasa
-                    </a>
                 </div>
             </div>
+
+            {/* Action */}
+            <div>
+                <h3 className="font-semibold mb-4">Aksi</h3>
+                <div className="space-y-3 text-sm">
+
+                <a
+                    href="https://wa.me/6285169757490"
+                    target="_blank"
+                    className="flex items-center gap-3 hover:text-yellow-300"
+                >
+                    <MessageCircle size={18} />
+                    Chat WhatsApp
+                </a>
+
+                <Link href="/admin-login" className="block hover:text-yellow-300">
+                    Login Admin
+                </Link>
+                </div>
+            </div>
+            </div>
+
+            {/* Bottom */}
+            <div className="mt-10 pt-6 border-t border-yellow-700 text-xs text-yellow-200 text-center">
+            © 2026 The House of Mamink — Created by mas dony putra perkasa
+            </div>
+        </div>
         </footer>
     );
 }

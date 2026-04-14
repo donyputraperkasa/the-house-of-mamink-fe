@@ -25,8 +25,8 @@ export default function Navbar() {
                             <Home size={18} /> Home
                         </Link>
 
-                        <Link href="/about" className={`flex items-center gap-2 transition-all duration-300 ${pathname === "/about" ? "text-yellow-300" : "hover:text-yellow-200"}`}>
-                            <Info size={18} /> About
+                        <Link href="/activity" className={`flex items-center gap-2 transition-all duration-300 ${pathname === "/about" ? "text-yellow-300" : "hover:text-yellow-200"}`}>
+                            <Info size={18} /> Activity
                         </Link>
 
                         <Link href="/gallery" className={`flex items-center gap-2 transition-all duration-300 ${pathname.startsWith("/gallery") ? "text-yellow-300" : "hover:text-yellow-200"}`}>
@@ -78,8 +78,8 @@ export default function Navbar() {
                             <Home /> Home
                         </Link>
 
-                        <Link href="/about" onClick={() => setOpen(false)} className={`flex items-center gap-3 text-sm py-2 transition-all duration-300 ${pathname === "/about" ? "text-yellow-200 font-semibold" : "hover:text-yellow-200"}`}>
-                            <Info /> About
+                        <Link href="/activity" onClick={() => setOpen(false)} className={`flex items-center gap-3 text-sm py-2 transition-all duration-300 ${pathname === "/about" ? "text-yellow-200 font-semibold" : "hover:text-yellow-200"}`}>
+                            <Info /> Activity
                         </Link>
 
                         <Link href="/gallery" onClick={() => setOpen(false)} className={`flex items-center gap-3 text-sm py-2 transition-all duration-300 ${pathname.startsWith("/gallery") ? "text-yellow-200 font-semibold" : "hover:text-yellow-200"}`}>

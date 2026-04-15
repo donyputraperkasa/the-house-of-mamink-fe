@@ -3,6 +3,7 @@
 import { useGalleryForm } from './useGalleryForm';
 import GalleryFields from './GalleryFields';
 import GalleryUpload from './GalleryUpload';
+import GalleryPreview from './GalleryPreview';
 import { Button } from '@/components/ui/Button';
 
 export default function GalleryForm() {
@@ -31,6 +32,8 @@ export default function GalleryForm() {
                 uploading={uploading}
                 onUpload={handleUpload}
             />
+
+            <GalleryPreview image={form.image || ''} />
 
             <div className="flex justify-end">
                 <Button disabled={loading || uploading}>

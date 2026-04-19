@@ -1,22 +1,33 @@
+"use client";
+
+import { useState } from "react";
 import { Activity } from "@/types/activity";
 import ActivityCard from "./ActivityCard";
+import ActivityModal from "./ActivityModal";
 
 export default function ActivityList({ data }: { data: Activity[] }) {
-    if (!data || data.length === 0) {
-        return (
-        <section className="py-16 px-6 text-center">
-            <p className="text-gray-500">Belum ada kegiatan</p>
-        </section>
-        );
-    }
+  const [selected, setSelected] = useState<Activity | null>(null);
 
-    return (
-        <section className="py-16 px-6">
+  return (
+    <>
+      <section className="py-16 px-6">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {data.map((item) => (
-            <ActivityCard key={item.id} item={item} />
-            ))}
+          {data.map((item) => (
+            <ActivityCard
+              key={item.id}
+              item={item}
+              onClick={() => setSelected(item)}
+            />
+          ))}
         </div>
-        </section>
-    );
+      </section>
+
+      {selected && (
+        <ActivityModal
+          item={selected}
+          onClose={() => setSelected(null)}
+        />
+      )}
+    </>
+  );
 }

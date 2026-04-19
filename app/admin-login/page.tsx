@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
         localStorage.setItem("token", data.access_token);
 
         // redirect ke admin dashboard
-        router.push("/admin");
+        router.push("/admin/dashboard");
         } catch (err: any) {
         setError(err.message || "Terjadi kesalahan");
         } finally {

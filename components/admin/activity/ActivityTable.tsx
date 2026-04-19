@@ -3,34 +3,85 @@
 import { useEffect, useState } from 'react';
 import { Activity } from '@/types';
 import ActivityRow from './ActivityRow';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function ActivityTable() {
     const [data, setData] = useState<Activity[]>([]);
+    const [loading, setLoading] = useState(true);
+    const token = useAuthStore((state) => state.token);
+    console.log('🔥 TOKEN:', token);
 
-    useEffect(() => {
-    const fetchData = async () => {
+    const fetchActivities = async () => {
         try {
-        const res = await fetch('http://localhost:4000/activity');
-        const json = await res.json();
-
-        console.log('API RESULT:', json);
-
-        // adjust sesuai response
-        setData(Array.isArray(json) ? json : json.data || []);
+            setLoading(true);
+            const res = await fetch('http://127.0.0.1:4000/activities', {
+                cache: 'no-store',
+            });
+            const json = await res.json();
+            setData(Array.isArray(json) ? json : json.data || []);
         } catch (err) {
-        console.error(err);
+            console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
-    fetchData();
+    useEffect(() => {
+        fetchActivities();
     }, []);
 
     const handleDelete = async (id: number) => {
-        await fetch(`http://localhost:4000/activity/${id}`, {
-        method: 'DELETE',
-        });
+        console.log('🔥 DELETE KE API:', id);
 
-        setData((prev) => prev.filter((item) => item.id !== id));
+        const confirmDelete = confirm('Yakin ingin menghapus activity ini?');
+        if (!confirmDelete) return;
+
+        try {
+            const res = await fetch(`http://127.0.0.1:4000/activities/${id}`, {
+                method: 'DELETE',
+                headers: token
+                    ? { Authorization: `Bearer ${token}` }
+                    : {},
+            });
+
+            console.log('DELETE STATUS:', res.status);
+            const text = await res.text();
+            console.log('DELETE RESPONSE:', text);
+
+            await fetchActivities();
+        } catch (err) {
+            console.error('DELETE ERROR:', err);
+        }
+    };
+
+    const handleUpdate = async (id: number, formData: FormData) => {
+        console.log('🔥 UPDATE KE API:', id);
+        console.log('🔥 URL:', `http://127.0.0.1:4000/activities/${id}`);
+
+        try {
+            const resUpdate = await fetch(`http://127.0.0.1:4000/activities/${id}`, {
+                method: 'PATCH',
+                headers: token
+                    ? { Authorization: `Bearer ${token}` }
+                    : {},
+                body: formData,
+            });
+
+            console.log('STATUS:', resUpdate.status);
+            const text = await resUpdate.text();
+            console.log('RESPONSE:', text);
+
+            if (!resUpdate.ok) {
+                console.error('UPDATE ERROR:', text);
+                alert('Gagal update activity');
+                return;
+            }
+
+            await fetchActivities();
+        } catch (err) {
+            console.error('UPDATE ERROR:', err);
+            alert('Terjadi error saat update');
+        }
     };
 
     return (
@@ -48,13 +99,28 @@ export default function ActivityTable() {
                 </thead>
 
                 <tbody>
-                    {data.map((item) => (
-                        <ActivityRow
-                        key={item.id}
-                        data={item}
-                        onDelete={handleDelete}
-                        />
-                ))}
+                    {loading ? (
+                        <tr>
+                            <td colSpan={4} className="text-center p-4 text-gray-500">
+                                Loading...
+                            </td>
+                        </tr>
+                    ) : data.length === 0 ? (
+                        <tr>
+                            <td colSpan={4} className="text-center p-4 text-gray-400">
+                                Belum ada activity
+                            </td>
+                        </tr>
+                    ) : (
+                        data.map((item) => (
+                            <ActivityRow
+                                key={item.id}
+                                data={item}
+                                onDelete={handleDelete}
+                                onUpdate={handleUpdate}
+                            />
+                        ))
+                    )}
                 </tbody>
             </table>
         </div>

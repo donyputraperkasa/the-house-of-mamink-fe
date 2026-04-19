@@ -1,12 +1,61 @@
 import { apiFetch } from '@/lib/api';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export async function getActivity() {
-    return apiFetch('/activity');
+    return apiFetch('/activities');
 }
 
-export async function createActivity(data: any) {
-    return apiFetch('/activity', {
+export async function createActivity(formData: FormData) {
+    const token = useAuthStore.getState().token;
+
+    return fetch('http://localhost:4000/activities', {
         method: 'POST',
-        body: JSON.stringify(data),
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+    }).then(res => res.json());
+}
+
+export async function updateActivity(id: number, formData: FormData) {
+    const token = useAuthStore.getState().token;
+
+    const res = await fetch(`http://localhost:4000/activities/${id}`, {
+        method: 'PATCH',
+        headers: {
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: formData,
     });
+
+    if (!res.ok) {
+        const text = await res.text();
+        console.error('UPDATE ERROR:', res.status, text);
+        throw new Error(`Update failed: ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log('UPDATE SUCCESS:', data);
+    return data;
+}
+
+export async function deleteActivity(id: number) {
+    const token = useAuthStore.getState().token;
+
+    const res = await fetch(`http://localhost:4000/activities/${id}`, {
+        method: 'DELETE',
+        headers: {
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+    });
+
+    if (!res.ok) {
+        const text = await res.text();
+        console.error('DELETE ERROR:', res.status, text);
+        throw new Error(`Delete failed: ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log('DELETE SUCCESS:', data);
+    return data;
 }

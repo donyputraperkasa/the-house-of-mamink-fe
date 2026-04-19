@@ -3,7 +3,7 @@ import { Activity } from "@/types/activity";
 
 async function getActivities(): Promise<Activity[]> {
     try {
-        const res = await fetch("http://localhost:4000/activity", {
+        const res = await fetch("http://localhost:4000/activities", {
         cache: "no-store",
         });
 

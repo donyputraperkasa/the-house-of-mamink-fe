@@ -17,7 +17,7 @@ export default function DashboardOverview() {
             const galleryRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/gallery`);
             const galleryData = await galleryRes.json();
 
-            const activityRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity`);
+            const activityRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activities`);
             const activityData = await activityRes.json();
 
             setStats({

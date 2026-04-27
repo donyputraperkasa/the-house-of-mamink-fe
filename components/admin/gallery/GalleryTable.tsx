@@ -18,6 +18,7 @@ export default function GalleryTable({ data, onDelete }: Props) {
             <tr className="border-b border-amber-200 text-left">
                 <th className="p-2">Image</th>
                 <th className="p-2">Title</th>
+                <th className="p-2">Description</th>
                 <th className="p-2">Action</th>
             </tr>
             </thead>
@@ -29,9 +30,15 @@ export default function GalleryTable({ data, onDelete }: Props) {
                 className="border-b border-amber-100 hover:bg-amber-50"
                 >
                 <td className="p-2">
-                    <img src={item.image} className="w-16 h-16 object-cover rounded" />
+                    <img
+                        src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/${item.image}`}
+                        className="w-16 h-16 object-cover rounded"
+                    />
                 </td>
                 <td className="p-2">{item.title}</td>
+                <td className="p-2 text-gray-600 max-w-xs truncate">
+                    {item.description && item.description.trim() ? item.description : '-'}
+                </td>
                 <td className="p-2">
                     <GalleryActions
                     id={item.id}

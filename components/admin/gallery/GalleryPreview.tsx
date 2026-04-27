@@ -14,7 +14,11 @@ export default function GalleryPreview({ image }: Props) {
     return (
         <div className="w-full">
             <img
-                src={image}
+                src={
+                    image?.startsWith('http')
+                    ? image
+                    : `${process.env.NEXT_PUBLIC_API_URL}/uploads/${image}`
+                }
                 alt="Preview"
                 className="w-full h-40 object-cover rounded-xl shadow"
             />

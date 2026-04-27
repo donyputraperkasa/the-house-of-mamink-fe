@@ -11,14 +11,14 @@ export async function getGalleryById(id: number) {
 export async function createGallery(data: any) {
     return apiFetch('/gallery', {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: data,
     });
 }
 
 export async function updateGallery(id: number, data: any) {
     return apiFetch(`/gallery/${id}`, {
         method: 'PATCH',
-        body: JSON.stringify(data),
+        body: data,
     });
 }
 

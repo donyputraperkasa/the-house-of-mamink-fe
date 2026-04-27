@@ -11,6 +11,7 @@ export function useGalleryForm() {
     const [data, setData] = useState<Gallery[]>([]);
     const [loading, setLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [file, setFile] = useState<File | null>(null);
 
     const params = useParams();
     const id = params?.id ? Number(params.id) : null;
@@ -21,28 +22,11 @@ export function useGalleryForm() {
         setForm((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleUpload = async (e: any) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
+    const handleUpload = (e: any) => {
+        const selectedFile = e.target.files?.[0];
+        if (!selectedFile) return;
 
-        const formData = new FormData();
-        formData.append('file', file);
-
-        setUploading(true);
-
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/upload`, {
-        method: 'POST',
-        body: formData,
-        });
-
-        const result = await res.json();
-
-        setForm((prev) => ({
-        ...prev,
-        image: result.url,
-        }));
-
-        setUploading(false);
+        setFile(selectedFile);
     };
 
     const fetchData = async () => {
@@ -66,13 +50,22 @@ export function useGalleryForm() {
         e.preventDefault();
         setLoading(true);
 
+        const formData = new FormData();
+        formData.append('title', form.title || '');
+        formData.append('description', form.description || '');
+
+        if (file) {
+            formData.append('image', file);
+        }
+
         if (id) {
-            await updateGallery(id, form);
+            await updateGallery(id, formData);
         } else {
-            await createGallery(form);
+            await createGallery(formData);
         }
 
         setForm({});
+        setFile(null);
         await fetchData();
 
         setLoading(false);

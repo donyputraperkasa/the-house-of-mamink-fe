@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from '../../ui/Input';
 import { Textarea } from '../../ui/Textarea';
 import { Profile } from '../../../types/profile';

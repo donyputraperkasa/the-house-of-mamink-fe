@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { Profile } from '@/types/profile';
+import { Input } from '../../ui/Input';
+import { Textarea } from '../../ui/Textarea';
+import { Profile } from '../../../types/profile';
 
 interface Props {
     form: Partial<Profile>;

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { Gallery } from '@/types/gallery';
-import { getGallery, getGalleryById, createGallery, updateGallery, deleteGallery } from '@/services/gallery.service';
+import { Gallery } from '../../../types/gallery';
+import { getGallery, getGalleryById, createGallery, updateGallery, deleteGallery } from '../../../services/gallery.service';
 
 
 export function useGalleryForm() {

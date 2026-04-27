@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Activity } from '@/types';
+import { Activity } from '../../../types/activity';
 
 type Props = {
     data: Activity;

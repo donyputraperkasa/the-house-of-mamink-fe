@@ -1,6 +1,6 @@
 'use client';
 
-import Sidebar from '@/components/admin/layout/Sidebar';
+import Sidebar from './Sidebar';
 import { useState } from 'react';
 import BreadCrumbs from './BreadCrumbs';
 

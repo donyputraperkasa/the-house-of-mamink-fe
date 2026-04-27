@@ -4,7 +4,7 @@ import { useGalleryForm } from './useGalleryForm';
 import GalleryFields from './GalleryFields';
 import GalleryUpload from './GalleryUpload';
 import GalleryPreview from './GalleryPreview';
-import { Button } from '@/components/ui/Button';
+import { Button } from '../../../components/ui/Button';
 
 export default function GalleryForm() {
     const {

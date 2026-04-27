@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Activity } from '@/types';
-import { createActivity } from '@/services/activity.service';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { Button } from '@/components/ui/Button';
+import { Activity } from '../../../types/activity';
+import { createActivity } from '../../../services/activity.service';
+import { Input } from '../../../components/ui/Input';
+import { Textarea } from '../../../components/ui/Textarea';
+import { Button } from '../../../components/ui/Button';
 
 type Props = {
   initialData?: Activity;

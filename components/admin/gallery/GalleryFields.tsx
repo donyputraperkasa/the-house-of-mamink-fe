@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { Gallery } from '@/types/gallery';
+import { Input } from '../../../components/ui/Input';
+import { Textarea } from '../../../components/ui/Textarea';
+import { Gallery } from '../../../types/gallery';
 
 interface Props {
     form: Partial<Gallery>;

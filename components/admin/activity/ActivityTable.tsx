@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Activity } from '@/types';
+import { Activity } from '../../../types/activity';
 import ActivityRow from './ActivityRow';
-import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthStore } from '../../../store/useAuthStore';
 
 export default function ActivityTable() {
     const [data, setData] = useState<Activity[]>([]);

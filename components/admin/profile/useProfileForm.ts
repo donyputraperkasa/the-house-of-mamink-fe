@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Profile } from '@/types/profile';
-import { getProfile, updateProfile } from '@/services/profile.service';
+import { Profile } from '../../../types/profile';
+import { getProfile, updateProfile } from '../../../services/profile.service';
 
 export function useProfileForm() {
     const [form, setForm] = useState<Partial<Profile>>({});

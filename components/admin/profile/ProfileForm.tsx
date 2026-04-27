@@ -2,7 +2,7 @@
 
 import ProfileFields from './ProfileFields';
 import AvatarUpload from './AvatarUpload';
-import { Button } from '@/components/ui/Button';
+import { Button } from '../../ui/Button';
 import { useProfileForm } from './useProfileForm';
 
 export default function ProfileForm() {

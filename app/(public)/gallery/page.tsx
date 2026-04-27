@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getGallery } from '@/services/gallery.service';
 import GalleryClient from '@/components/public/gallery/GalleryClient';
 

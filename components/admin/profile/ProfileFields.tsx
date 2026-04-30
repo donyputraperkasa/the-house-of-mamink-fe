@@ -1,7 +1,7 @@
 "use client";
 
-import { Input } from '../../ui/Input';
-import { Textarea } from '../../ui/Textarea';
+import { Input } from '../../ui/input';
+import { Textarea } from '../../ui/textarea';
 import { Profile } from '../../../types/profile';
 
 interface Props {

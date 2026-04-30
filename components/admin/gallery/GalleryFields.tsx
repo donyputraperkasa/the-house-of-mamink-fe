@@ -1,5 +1,5 @@
-import { Input } from '../../../components/ui/Input';
-import { Textarea } from '../../../components/ui/Textarea';
+import { Input } from '../../../components/ui/input';
+import { Textarea } from '../../../components/ui/textarea';
 import { Gallery } from '../../../types/gallery';
 
 interface Props {
